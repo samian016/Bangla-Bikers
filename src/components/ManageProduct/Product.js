@@ -1,0 +1,31 @@
+import React from "react";
+import { Button, Card, CardGroup, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
+
+const Product = (props) => {
+  const { handelDelete } = props;
+  const { _id, name, description, image, price, status } = props.package;
+  // console.log(props);
+
+  return (
+    <Col sm={12} md={12} lg={4}>
+      <CardGroup>
+        <Card>
+          <Card.Img variant="top" className="w-100 h-50" src={image} />
+          <Card.Body>
+            <Card.Title>{name}</Card.Title>
+            <Card.Text>{description.slice(0, 100)}</Card.Text>
+            <p>Cost: {price}</p>
+          </Card.Body>
+          <Card.Footer>
+            <Button onClick={()=>handelDelete(_id)} variant="dark">
+              Delete
+            </Button>
+          </Card.Footer>
+        </Card>
+      </CardGroup>
+    </Col>
+  );
+};
+
+export default Product;
